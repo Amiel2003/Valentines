@@ -46,6 +46,10 @@
           class="bounce2 inline-flex items-center justify-center whitespace-nowrap rounded-md text-[20px] font-medium disabled:pointer-events-none disabled:opacity-50 hover:bg-green-400 min-h-12 min-w-[75px] px-4 py-2 bg-green-500 text-white transition">
           Yes
         </button>
+        <button id="yesButton2" style="display: none;"
+          class="bounce2 inline-flex items-center justify-center whitespace-nowrap rounded-md text-[20px] font-medium disabled:pointer-events-none disabled:opacity-50 hover:bg-green-400 min-h-12 min-w-[75px] px-4 py-2 bg-green-500 text-white transition">
+          Yes
+        </button>
         <button id="noButton"
           class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-[20px] font-medium transition disabled:pointer-events-none disabled:opacity-50 hover:bg-red-700 h-12 min-w-[75px] w-auto px-4 py-2 bg-red-500 text-white">
           No
@@ -57,6 +61,7 @@
   <script type="module">
     import confetti from 'https://cdn.skypack.dev/canvas-confetti';
     const yesButton = document.getElementById('yesButton');
+    const yesButton2 = document.getElementById('yesButton2');
     const noButton = document.getElementById('noButton');
     const imageDisplay = document.getElementById('imageDisplay');
     const valentineQuestion = document.getElementById('valentineQuestion');
@@ -74,38 +79,57 @@
       "./images/image4.gif",
       "./images/image5.gif",
       "./images/image6.gif",
-      "./images/image7.gif"
+      "./images/image7.gif",
+      "./images/image4.gif",
     ];
   
     noButton.addEventListener('click', function() {
       if (noClickCount < 5) {
         noClickCount++;
+          yesButton.style.display = 'none'
+          yesButton2.style.display = 'block'
         imageDisplay.src = imagePaths[noClickCount];
         buttonHeight += 35; // Increase height by 5px on each click
         buttonWidth += 35;
         fontSize += 25; // Increase font size by 1px on each click
+        yesButton2.style.height = `${buttonHeight}px`; // Update button height
+        yesButton2.style.width = `${buttonWidth}px`;
+        yesButton2.style.fontSize = `${fontSize}px`; // Update font size
         yesButton.style.height = `${buttonHeight}px`; // Update button height
         yesButton.style.width = `${buttonWidth}px`;
-        yesButton.style.fontSize = `${fontSize}px`; // Update font size
+        yesButton.style.fontSize = `${fontSize}px`
         if (noClickCount < 6) {
-          noButton.textContent = ["No", "Are you sure?", "Pookie please", "Don't do this to me :(", "You're breaking my heart", "I'm gonna cry..."][noClickCount];
+          noButton.textContent = ["No", "Nge nag no jud siya", "Huhuhuhuhu", "Who is me ragud ko?", "Ako nang enable ang yes", "I'm gonna cry"][noClickCount];
         }
       }
     });
+
+    function resize(yes1, yes2,buttonHeight, buttonWidth){
+
+    }
   
     yesButton.addEventListener('click', function() {
 
-      if(yesClickCount < 5) {
+      if(yesClickCount < 7) {
         yesClickCount++;
         imageDisplay.src = imagePaths[yesClickCount];
-        yesButton.textContent = ["Yes", "Sure?", "Final na jud?", "Nge bisan mag no gyud siya", "E no nalang oy", "E disable nako ning yes button"][yesClickCount];
+        noButton.style.display = 'none';
+        yesButton.textContent = ["Yes", "Sure?", "Final na jud?", "Nge bisan mag no gyud siya", "E no nalang oy", "Dako na kayong yes oh", "Ako ibalik sa start", "Yes"][yesClickCount];
         console.log(yesClickCount)
+        if(yesClickCount == 7){
+          yesButton.disabled = true
+          noButton.style.display = 'block';
+        }
       }
-      // imageDisplay.src = './images/image7.gif'; // Change to image7.gif
-      // valentineQuestion.textContent = "Yayyy!! :3"; // Change the question text
-      // responseButtons.style.display = 'none'; // Hide both buttons
-      // confetti(); // Trigger confetti animation
+      
     });
+
+    yesButton2.addEventListener('click', () => {
+      imageDisplay.src = './images/image7.gif'; // Change to image7.gif
+      valentineQuestion.textContent = "Yayyy!! :3"; // Change the question text
+      responseButtons.style.display = 'none'; // Hide both buttons
+      confetti(); // Trigger confetti animation
+    })
     
   </script>  
 </body>
