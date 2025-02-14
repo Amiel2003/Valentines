@@ -40,7 +40,11 @@
       <h2 id="valentineQuestion" class="text-xl sm:text-2xl md:text-4xl font-medium text-[#bd1e59] my-4 text-center">
         Hi Gracey, Will you be my Valentine?
       </h2>
-    
+
+      <a href="https://youtube.com" id="loveletter" class="hidden" target="_blank" rel="norefferer noopener">
+        <button class="bounce2 inline-flex items-center justify-center whitespace-nowrap rounded-md text-[20px] font-medium disabled:pointer-events-none disabled:opacity-50 hover:bg-red-400 min-h-12 min-w-[75px] px-4 py-2 bg-red-500 text-white transition">Click me!</button>
+      </a>
+          
      <div class="flex gap-4 pt-[20px] items-center" id="responseButtons">
         <button id="yesButton"
           class="bounce2 inline-flex items-center justify-center whitespace-nowrap rounded-md text-[20px] font-medium disabled:pointer-events-none disabled:opacity-50 hover:bg-green-400 min-h-12 min-w-[75px] px-4 py-2 bg-green-500 text-white transition">
@@ -66,6 +70,7 @@
     const imageDisplay = document.getElementById('imageDisplay');
     const valentineQuestion = document.getElementById('valentineQuestion');
     const responseButtons = document.getElementById('responseButtons');
+    const loveletter = document.getElementById('loveletter');
   
     let noClickCount = 0;
     let yesClickCount = 0;
@@ -99,7 +104,7 @@
         yesButton.style.width = `${buttonWidth}px`;
         yesButton.style.fontSize = `${fontSize}px`
         if (noClickCount < 6) {
-          noButton.textContent = ["No", "Nge nag no jud siya", "Huhuhuhuhu", "Who is me ragud ko?", "Ako nang enable ang yes", "I'm gonna cry"][noClickCount];
+          noButton.textContent = ["No", "Nge nag no jud siya", "Huhuhuhuhu", "Who is me ragud ko?", "Dako na kayong yes oh", "I'm gonna cry"][noClickCount];
         }
       }
     });
@@ -114,7 +119,7 @@
         yesClickCount++;
         imageDisplay.src = imagePaths[yesClickCount];
         noButton.style.display = 'none';
-        yesButton.textContent = ["Yes", "Sure?", "Final na jud?", "Nge bisan mag no gyud siya", "E no nalang oy", "Dako na kayong yes oh", "Ako ibalik sa start", "Yes"][yesClickCount];
+        yesButton.textContent = ["Yes", "Sure?", "Final na jud?", "Nge bisan mag no gyud siya", "E no nalang oy", "Disabled na ang yes button", "Ako ibalik sa start", "Yes"][yesClickCount];
         console.log(yesClickCount)
         if(yesClickCount == 7){
           yesButton.disabled = true
@@ -125,6 +130,7 @@
     });
 
     yesButton2.addEventListener('click', () => {
+      loveletter.style.display = 'block';
       imageDisplay.src = './images/image7.gif'; // Change to image7.gif
       valentineQuestion.textContent = "Yayyy!! :3"; // Change the question text
       responseButtons.style.display = 'none'; // Hide both buttons
